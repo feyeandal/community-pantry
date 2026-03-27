@@ -20,7 +20,7 @@ const CONFIG = Object.freeze({
   // --- Photo settings ---
   PHOTO_MAX_PX: 1200,     // resize longest edge to this many pixels
   PHOTO_QUALITY: 0.82,    // JPEG compression quality (0–1)
-  PHOTO_MAX_BYTES: 3 * 1024 * 1024,  // reject originals > 3 MB before compression
+  PHOTO_MAX_BYTES: 25 * 1024 * 1024,  // reject originals > 25 MB before compression
 
   // --- Storage ---
   BUCKET: 'pantry-photos',
