@@ -84,8 +84,9 @@ async function loadPantries() {
 }
 
 function addPantryMarker(pantry) {
+  const pinClass = pantry.approved ? 'pantry-pin verified' : 'pantry-pin pending-pin';
   const icon = L.divIcon({
-    html: '<div class="pantry-pin">🧺</div>',
+    html: `<div class="${pinClass}">🧺</div>`,
     className: '',
     iconSize: [34, 34],
     iconAnchor: [17, 17],
@@ -153,6 +154,14 @@ function buildPopup(pantry) {
     p.appendChild(a);
     body.appendChild(p);
   }
+
+  const statusRow = document.createElement('p');
+  statusRow.className = 'popup-row';
+  const badge = document.createElement('span');
+  badge.className = pantry.approved ? 'popup-badge verified' : 'popup-badge pending-badge';
+  badge.textContent = pantry.approved ? '✓ Verified' : '⏳ Pending verification';
+  statusRow.appendChild(badge);
+  body.appendChild(statusRow);
 
   const date = document.createElement('p');
   date.className = 'popup-date';
